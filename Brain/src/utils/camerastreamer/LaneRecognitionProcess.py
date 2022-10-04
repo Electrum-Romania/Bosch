@@ -11,5 +11,5 @@ class LaneRecognitionProcess(WorkerProcess):
         super(LaneRecognitionProcess, self).run()
 
     def _init_threads(self):
-        laneTh = LaneRecognitionThread(self.outPs)
+        laneTh = LaneRecognitionThread(self.inPs, self.outPs)
         self.threads.append(laneTh)
