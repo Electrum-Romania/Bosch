@@ -44,30 +44,45 @@ from src.hardware.serialhandler.SerialHandlerProcess        import SerialHandler
 # utility imports
 from src.utils.camerastreamer.CameraStreamerProcess         import CameraStreamerProcess
 from src.utils.remotecontrol.RemoteControlReceiverProcess   import RemoteControlReceiverProcess
+from src.utils.camerastreamer.LaneRecognitionProcess        import LaneRecognitionProcess
 
 # =============================== CONFIG =================================================
 enableStream        =  True
 enableCameraSpoof   =  False 
 enableRc            =  True
+enableLane          =  True
 
 # =============================== INITIALIZING PROCESSES =================================
 allProcesses = list()
+
+# =============================== INITIALIZING PIPES ======================================
+allPipes = list()
+
+# =============================== LANE RECOGNITION ========================================
+if enableLane:
+        laneRgR, laneRgS = Pipe(duplex = False)
+
+        allPipes.append(laneRgS);
+
+        laneProc = LaneRecognitionProcess([laneRgR], [])
+        allProcesses.append(laneProc)
 
 # =============================== HARDWARE ===============================================
 if enableStream:
     camStR, camStS = Pipe(duplex = False)           # camera  ->  streamer
 
     if enableCameraSpoof:
-        camSpoofer = CameraSpooferProcess([],[camStS],'vid')
+        allPipes.append(camStS)
+        camSpoofer = CameraSpooferProcess([], allPipes, 'vid')
         allProcesses.append(camSpoofer)
 
     else:
-        camProc = CameraProcess([],[camStS])
+        allPipes.append(camStS)
+        camProc = CameraProcess([], allPipes)
         allProcesses.append(camProc)
 
     streamProc = CameraStreamerProcess([camStR], [])
     allProcesses.append(streamProc)
-
 
 # =============================== DATA ===================================================
 #LocSys client process
@@ -90,12 +105,19 @@ if enableRc:
     allProcesses.append(rcProc)
 
 
+# ===================================== LANE RECOGNITION =====================
+
+
+
+
+
+
+
 # ===================================== START PROCESSES ==================================
 print("Starting the processes!",allProcesses)
 for proc in allProcesses:
     proc.daemon = True
     proc.start()
-
 
 # ===================================== STAYING ALIVE ====================================
 blocker = Event()  
@@ -113,3 +135,4 @@ except KeyboardInterrupt:
             print("Process witouth stop",proc)
             proc.terminate()
             proc.join()
+
