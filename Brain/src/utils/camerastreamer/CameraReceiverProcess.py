@@ -27,7 +27,9 @@
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE
 
 import sys
-sys.path.append('.')
+
+from pyparsing import col
+sys.path.append('../../..')
 
 import time
 import socket
@@ -106,6 +108,12 @@ class CameraReceiverProcess(WorkerProcess):
                 image = cv2.imdecode(image, cv2.IMREAD_COLOR)
                 image = np.reshape(image, self.imgSize)
                 image = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
+
+                # lane
+                gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+                blur = cv2.GaussianBlur(gray, (5, 5), 0)
+                edges = cv2.Canny(image, 100, 200)
+                
 
                 # ----------------------- show images -------------------
                 cv2.imshow('Image', image) 
