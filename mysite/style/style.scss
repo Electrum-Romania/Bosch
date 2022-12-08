@@ -1,3 +1,11 @@
 body {
-  background-color: aliceblue;
+  display: flex;
+}
+
+frame {
+  position: absolute;
+  height: 100px;
+  width: 100px;
+  border: 1px solid;
+  box-shadow: 1px 1px black;
 }
