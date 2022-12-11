@@ -31,16 +31,14 @@
                     <div id="c" class="menu-button">ALO</div>
                 </div>
                 <div class = "parameters">
-                    <div>
-                        <input id="minVal" class="slider" type="range" min="0" max="500" value="100">
-                        <label for="minval">threshLow</label>
-                        <span id="minVal-value"></span>
-                    </div>
-                    <div>
-                        <input id="maxVal" class="slider" type="range" min="0" max="500" value="100">
-                        <label for="maxVal">threshHigh</label>
-                        <span id="maxVal-value"></span>
-                    </div>
+                    {% block menufile %}
+
+                    {% endblock %}
+<!--                    <div>-->
+<!--                        <input id="maxVal" class="slider" type="range" min="0" max="500" value="100">-->
+<!--                        <label for="maxVal">threshHigh</label>-->
+<!--                        <span id="maxVal-value"></span>-->
+<!--                    </div>-->
                 </div>
             </div>
         </div>

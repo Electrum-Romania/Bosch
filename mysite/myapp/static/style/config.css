@@ -16,7 +16,6 @@ div.menu {
   align-items: center;
   justify-content: center;
   flex-direction: row;
-  gap: 1%;
 }
 
 .menu-button {
