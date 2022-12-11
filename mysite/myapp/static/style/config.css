@@ -1,0 +1,47 @@
+div.config {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 0px;
+}
+
+div.menu {
+  padding: 1%;
+  width: 80%;
+  height: 5%;
+  border-radius: 4px;
+  background: linear-gradient(290deg, rgb(0, 128, 128) 0%, rgba(0, 0, 0, 0.8) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: 1%;
+}
+
+.menu-button {
+  width: 20%;
+  height: 200%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.menu-button:hover {
+  background: teal;
+}
+.menu-button.clicked {
+  background: teal;
+}
+
+div.parameters {
+  padding: 1%;
+  width: 80%;
+  height: 75%;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+
+/*# sourceMappingURL=config.css.map */

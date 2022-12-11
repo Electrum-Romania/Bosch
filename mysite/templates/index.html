@@ -1,14 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="../style/style.css">
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
     {% load static %}
-    <div class="frame">
-        <img src="{% static image %}" alt="My image"/>
+    <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="{% static 'style/style.css' %}">
+    <link rel="stylesheet" href="{% static 'style/frame.css' %}">
+    <link rel="stylesheet" href="{% static 'style/config.css' %}">
+    <meta charset="UTF-8">
+    <title>Bosch</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class = "upper container-half">
+            <div class = "window">
+                <div class="frame">
+                    CAMERA
+                </div>
+                <div class="frame">
+                    ANALYSIS
+                </div>
+            </div>
+            <div class = "config window">
+                <div class="menu">
+                    <div id="lanes" class="menu-button">LANES</div>
+                    <div id="SIGNS" class="menu-button">SIGNS</div>
+                    <div id="alo" class="menu-button">ALO</div>
+                    <div id="a" class="menu-button">ALO</div>
+                    <div id="b" class="menu-button">ALO</div>
+                    <div id="c" class="menu-button">ALO</div>
+                </div>
+                <div class = "parameters">
+                    <div>
+                        <input id="minVal" class="slider" type="range" min="0" max="500" value="100">
+                        <label for="minval">threshLow</label>
+                        <span id="minVal-value"></span>
+                    </div>
+                    <div>
+                        <input id="maxVal" class="slider" type="range" min="0" max="500" value="100">
+                        <label for="maxVal">threshHigh</label>
+                        <span id="maxVal-value"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class = "lower container-half">
+            <div class = "window">
+                DIRECTION SIMULATION
+            </div>
+            <div class = "window">
+                OTHERS
+            </div>
+        </div>
     </div>
+    <script src="{% static 'src/config-menu.js' %}"></script>
+    <script src="{% static 'src/sliders.js' %}"></script>
 </body>
 </html>
