@@ -12,18 +12,3 @@ class EdgeDetection(models.Model):
 
     def __str__(self):
         return self.name
-
-    def getMaxVal(self):
-        return self.maxVal
-
-    def getMinVal(self):
-        return self.minVal
-
-    def getPos1(self):
-        return self.pos1
-    
-    def getpos2(self):
-        return self.pos2
-    
-    def getpos3(self):
-        return self.pos3

@@ -16,7 +16,7 @@
     <div class="container">
         <div class = "upper container-half">
             <div class = "window">
-                <div class="frame">
+                <div id="camera" class="frame">
                     CAMERA
                 </div>
                 <div class="frame">
@@ -33,27 +33,33 @@
                     <div id="c" class="menu-button">ALO</div>
                 </div>
                 <div class = "parameters">
-                    <div>
-                        <input id="maxVal" class="slider" type="range" min="0" max="500" value={{maxVal}}>
-                        <label for="maxVal">threshHigh</label>
-                        <span id="maxVal-value"></span>
-                    </div> 
-                    <div>
-                        <input id="minVal" class="slider" type="range" min="0" max="500" value="0">
-                        <label for="minVal">{{name}}</label>
-                        <span id="minVal-value"></span>
-                    </div>
-                    <div>
-                        <input id="pos1" class="slider" type="range" min={{min}} max={{max}} value={{default}}>
-                        <label for="pos1">{{name}}</label>
-                        <span id="pos1-value"></span>
-                    </div>
-                    <div>
-                        <input id="minVal" class="slider" type="range" min={{min}} max={{max}} value={{default}}>
-                        <label for="minVal">{{name}}</label>
-                        <span id="minVal-value"></span>
-                    </div>
+                        <div>
+                            <input id="maxVal" class="slider" type="range" min="0" max="500" value={{maxVal}}>
+                            <label for="maxVal">Threshold High</label>
+                            <span id="maxVal-value">{{maxVal}}</span>
+                        </div> 
+                        <div>
+                            <input id="minVal" class="slider" type="range" min="0" max="500" value={{minval}}>
+                            <label for="minVal">Threshold Low</label>
+                            <span id="minVal-value">{{minVal}}</span>
+                        </div>
+                        <div>
+                            <input id="pos1" class="slider" type="range" min=0 max=500 value={{pos1}}>
+                            <label for="pos1">Position 1</label>
+                            <span id="pos1-value">{{pos1}}</span>
+                        </div>
+                        <div>
+                            <input id="pos2" class="slider" type="range" min=0 max=500 value={{pos2}}>
+                            <label for="pos2">Position 2</label>
+                            <span id="pos2-value">{{pos2}}</span>
+                        </div>
+                        <div>
+                            <input id="pos3" class="slider" type="range" min=0 max=500 value={{pos3}}>
+                            <label for="pos3">Position 3</label>
+                            <span id="pos3-value">{{pos3}}</span>
+                        </div>
                 </div>
+
             </div>
         </div>
         <div class = "lower container-half">
@@ -66,11 +72,11 @@
         </div>
     </div>
 
-    <script src="{% static 'src/config-menu.js' %}"></script>
-    <script src="{% static 'src/sliders.js' %}"></script>
+    <script type="text/javascript" charset="UTF-8" src="{% static 'src/config-menu.js' %}"></script>
+    <script type="text/javascript" charset="UTF-8" src="{% static 'src/sliders.js' %}"></script>
+    <script type="text/javascript" charset="UTF-8" src="{% static 'src/camera.js' %}"></script>
     <script>
-        console.log("100");
-
+            
     </script>
 </body>
 </html>

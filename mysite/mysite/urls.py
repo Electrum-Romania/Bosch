@@ -21,4 +21,6 @@ urlpatterns = [
     path('', views.index),
     path('admin/', admin.site.urls),
     path('load/', views.load),
+    path('camera/', views.camera),
+    path('updateImage/', views.updateImage),
 ]
