@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    
     {% load static %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="{% static 'style/style.css' %}">
     <link rel="stylesheet" href="{% static 'style/frame.css' %}">
@@ -31,14 +33,26 @@
                     <div id="c" class="menu-button">ALO</div>
                 </div>
                 <div class = "parameters">
-                    {% block menufile %}
-
-                    {% endblock %}
-<!--                    <div>-->
-<!--                        <input id="maxVal" class="slider" type="range" min="0" max="500" value="100">-->
-<!--                        <label for="maxVal">threshHigh</label>-->
-<!--                        <span id="maxVal-value"></span>-->
-<!--                    </div>-->
+                    <div>
+                        <input id="maxVal" class="slider" type="range" min="0" max="500" value={{maxVal}}>
+                        <label for="maxVal">threshHigh</label>
+                        <span id="maxVal-value"></span>
+                    </div> 
+                    <div>
+                        <input id="minVal" class="slider" type="range" min="0" max="500" value="0">
+                        <label for="minVal">{{name}}</label>
+                        <span id="minVal-value"></span>
+                    </div>
+                    <div>
+                        <input id="pos1" class="slider" type="range" min={{min}} max={{max}} value={{default}}>
+                        <label for="pos1">{{name}}</label>
+                        <span id="pos1-value"></span>
+                    </div>
+                    <div>
+                        <input id="minVal" class="slider" type="range" min={{min}} max={{max}} value={{default}}>
+                        <label for="minVal">{{name}}</label>
+                        <span id="minVal-value"></span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -51,7 +65,12 @@
             </div>
         </div>
     </div>
+
     <script src="{% static 'src/config-menu.js' %}"></script>
     <script src="{% static 'src/sliders.js' %}"></script>
+    <script>
+        console.log("100");
+
+    </script>
 </body>
 </html>
