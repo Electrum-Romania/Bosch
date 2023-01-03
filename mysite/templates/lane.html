@@ -1,0 +1,33 @@
+{% extends "index.html" %}
+
+{% block lane %}
+
+<div id="lane">
+    <div>
+        <input id="maxVal" class="slider" type="range" min="0" max="500" value={{maxVal}}>
+        <label for="maxVal">Threshold High</label>
+        <span id="maxVal-value">{{maxVal}}</span>
+    </div> 
+    <div>
+        <input id="minVal" class="slider" type="range" min="0" max="500" value={{minval}}>
+        <label for="minVal">Threshold Low</label>
+        <span id="minVal-value">{{minVal}}</span>
+    </div>
+    <div>
+        <input id="pos1" class="slider" type="range" min=0 max=500 value={{pos1}}>
+        <label for="pos1">Position 1</label>
+        <span id="pos1-value">{{pos1}}</span>
+    </div>
+    <div>
+        <input id="pos2" class="slider" type="range" min=0 max=500 value={{pos2}}>
+        <label for="pos2">Position 2</label>
+        <span id="pos2-value">{{pos2}}</span>
+    </div>
+    <div>
+        <input id="pos3" class="slider" type="range" min=0 max=500 value={{pos3}}>
+        <label for="pos3">Position 3</label>
+        <span id="pos3-value">{{pos3}}</span>
+    </div>
+</div>
+
+{% endblock %}

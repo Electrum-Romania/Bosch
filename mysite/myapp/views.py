@@ -18,23 +18,18 @@ def index(request):
         'pos2': getattr(edge, 'pos2'),
         'pos3': getattr(edge, 'pos3'),
     }
-
     return HttpResponse(template.render(context, request))
 
 @csrf_exempt
 def load(request):
     setattr(edge, request.POST['id'], request.POST['value'])
-    print(request.POST['id'])
-    print(request.POST['value'])
     edge.save()
     return HttpResponse(request.POST['id'])
 
 @csrf_exempt
 def camera(request):
-    print(getattr(edge, 'pos1'))
     return HttpResponse("../static/b.jpeg")
 
 @csrf_exempt
 def updateImage(request):
-    
     return HttpResponse("Image updated")

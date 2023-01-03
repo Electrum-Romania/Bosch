@@ -1,5 +1,4 @@
-$menu-color: linear-gradient(to right, #1f4037, #99f2c8);
-
+$ice: rgba(219, 241, 253, 1);
 
 div.config {
   display: flex;
@@ -7,7 +6,7 @@ div.config {
   justify-content: center;
   flex-direction: column;
 
-  gap: 0px;
+  gap: 5px;
 }
 
 div.menu {
@@ -17,12 +16,10 @@ div.menu {
 
   border-radius: 4px;
 
-  background: linear-gradient(290deg, rgba(0,128,128,1) 0%, rgba(0,0,0,0.8) 100%);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: row;
-
 }
 
 .menu-button {
@@ -35,13 +32,14 @@ div.menu {
 
   border-radius: 4px;
   cursor: pointer;
+  user-select: none;
 
   &:hover {
-    background: teal;
+    background: $ice;
   }
 
   &.clicked {
-    background: teal;
+    background: $ice;
   }
 }
 
@@ -51,11 +49,30 @@ div.parameters {
   height: 75%;
 }
 
-div.param {
+div.parameters-div {
   width: 100%;
   height: 100%;
 
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
+
+  visibility: hidden;
+}
+
+.visible {
+  visibility: visible !important;
+}
+
+#lanes-icon {
+  filter: invert(100%);
+
+  &:hover {
+    filter: invert(0%);
+  }
+
+  &:active {
+    filter: invert(0%);
+  }
+  
 }
