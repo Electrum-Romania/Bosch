@@ -5,6 +5,7 @@ from django.views.decorators.csrf import csrf_exempt
 
 from PIL import Image
 import base64
+import cv2
 
 # Create your views here.
 edge, created = EdgeDetection.objects.get_or_create(name='edges')
@@ -34,23 +35,39 @@ def camera(request):
 @csrf_exempt
 def updateImage(request):
 
-    image = request.body;
+    image = request.body
     
-    frame = open('myapp/static/frame.jpg', 'wb');
-    frame.write(image);
-    frame.close();
+    frame = open('myapp/static/frame.jpg', 'wb')
+    frame.write(image)
+    frame.close()
 
     return HttpResponse("Image updated")
 
 
 def gen(camera):
-    
-
 	while True:
 		frame = camera.get_frame()
 		yield (b'--frame\r\n'
 				b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n\r\n')
 
-def webcam_feed(request):
-	return StreamingHttpResponse(gen(LiveWebCam()),
+def video_feed(request):
+	return StreamingHttpResponse(gen(VideoCamera()),
 					content_type='multipart/x-mixed-replace; boundary=frame')
+
+class VideoCamera(object):
+	def __init__(self):
+		self.video = cv2.VideoCapture(0)
+
+	def __del__(self):
+		self.video.release()
+
+	def get_frame(self):
+		success, image = self.video.read()
+		# We are using Motion JPEG, but OpenCV defaults to capture raw images,
+		# so we must encode it into JPEG in order to correctly display the
+		# video stream.
+
+		gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+		frame_flip = cv2.flip(image,1)
+		ret, jpeg = cv2.imencode('.jpg', frame_flip)
+		return jpeg.tobytes()
