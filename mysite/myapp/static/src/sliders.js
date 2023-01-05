@@ -1,7 +1,7 @@
 $('input[type=range]').on('input', function() {
     
     $.ajax({
-        url: "load/",
+        url: "load",
         type: "POST",
         data: {
             'id': this.id,
