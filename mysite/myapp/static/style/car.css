@@ -1,0 +1,13 @@
+.traffic {
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 5px;
+}
+
+#car {
+  transform: rotate(90deg) scale(0.25) translateY(500px);
+}
+
+#arrow-right {
+  transform: scale(5) translateX(-70px);
+}/*# sourceMappingURL=car.css.map */

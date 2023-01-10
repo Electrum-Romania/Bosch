@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{% static 'style/style.css' %}">
     <link rel="stylesheet" href="{% static 'style/frame.css' %}">
     <link rel="stylesheet" href="{% static 'style/config.css' %}">
+    <link rel="stylesheet" href="{% static 'style/car.css' %}">
     <meta charset="UTF-8">
     <title>Bosch</title>
 </head>
@@ -17,7 +18,7 @@
         <div class = "upper container-half">
             <div class = "window">
                 <div id="camera" class="frame">
-                    <img class = "frame" src="{% url 'videoFeed' %}">
+                    <img class = "frame" src="{% url 'camera' %}">
                 </div>
                 <div class="frame">
                     ANALYSIS
@@ -71,8 +72,9 @@
             </div>
         </div>
         <div class = "lower container-half">
-            <div class = "window">
-                DIRECTION SIMULATION
+            <div class = "window traffic">
+                <svg id="car" class="traffic" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 150 150" shape-rendering="geometricPrecision" text-rendering="geometricPrecision"><rect width="79.868154" height="150.608519" rx="16" ry="16" transform="translate(40.136917 0.000001)" stroke-width="0"/><rect width="2.281947" height="10.141988" rx="0" ry="0" transform="translate(37.85497 19.776876)" stroke-width="0"/><rect width="2.281947" height="10.141988" rx="0" ry="0" transform="translate(37.855002 123.985804)" stroke-width="0"/><rect width="2.281947" height="10.141988" rx="0" ry="0" transform="translate(120.005071 123.985804)" stroke-width="0"/><rect width="2.281947" height="10.141988" rx="0" ry="0" transform="translate(120.005071 19.776876)" stroke-width="0"/><rect width="10.141988" height="3.549696" rx="0" ry="0" transform="translate(50.025355 10.141988)" fill="#fff" stroke-width="0"/><rect width="10.141988" height="3.549696" rx="0" ry="0" transform="translate(99.213995 10.141988)" fill="#fff" stroke-width="0"/><rect width="59.330628" height="94.06694" rx="0" ry="0" transform="translate(50.025355 29.918864)" fill="#282829" stroke-width="0"/></svg>
+                <svg id="arrow-right" class="traffic" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16"> <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/> </svg> 
             </div>
             <div class = "window">
                 OTHERS
