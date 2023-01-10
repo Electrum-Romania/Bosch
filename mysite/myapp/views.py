@@ -9,17 +9,20 @@ import socket
 import cv2
 import numpy as np
 
-# Create your views here.
+# store last session parameters
 edge, created = EdgeDetection.objects.get_or_create(name='edges')
-host = '0.0.0.0'
-port = 2244
-server_socket = socket.socket()
-server_socket.setsockopt(socket.SOL_SOCKET,socket.SO_REUSEADDR,1)
-server_socket.bind((host, port))
-server_socket.listen(0)
-print('listen')
-connection = server_socket.accept()[0]
-print('connected')
+
+# RPI SOCKET SERVER
+
+# host = '0.0.0.0'
+# port = 2244
+# server_socket = socket.socket()
+# server_socket.setsockopt(socket.SOL_SOCKET,socket.SO_REUSEADDR,1)
+# server_socket.bind((host, port))
+# server_socket.listen(0)
+# print('listen')
+# connection = server_socket.accept()[0]
+# print('connected')
 
 def index(request):
     template = loader.get_template('index.html')
