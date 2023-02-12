@@ -6,7 +6,6 @@ from django.views.decorators import gzip
 
 import struct
 import socket
-import cv2
 import numpy as np
 
 # store last session parameters

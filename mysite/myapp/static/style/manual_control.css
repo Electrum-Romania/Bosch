@@ -1,0 +1,7 @@
+.manual_control {
+  width: 100%;
+  height: 100%;
+  background-color: red;
+  display: grid;
+  grid-template-columns: 10% 10% minmax(10px, 10%) 10% repeat(5, 10%) 50px auto 100px 10%;
+}/*# sourceMappingURL=manual_control.css.map */
