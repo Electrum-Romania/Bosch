@@ -24,7 +24,7 @@
                     <img class = "frame" src="{% url 'camera' %}">
                 </div>
                 <div class="frame">
-                    ANALYSIS
+                    <img class = "frame" src="{% url 'analysis' %}">
                 </div>
             </div>
             <div class = "config window">
@@ -33,7 +33,7 @@
                         <svg id="lanes-icon" class="visible" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 300 100" shape-rendering="geometricPrecision" text-rendering="geometricPrecision"><line x1="0" y1="-150" x2="0" y2="150" transform="matrix(4 0 0 1 100.49666 150)" fill="none" stroke="#000" stroke-width="3"/><line x1="0" y1="-150" x2="0" y2="150" transform="matrix(4 0 0 1 200.008462 150)" fill="none" stroke="#000" stroke-width="3"/><line x1="0" y1="-15.484853" x2="0" y2="15.484854" transform="matrix(3 0 0 1 150 15.484854)" fill="none" stroke="#000" stroke-width="3"/><line x1="0" y1="-15.484853" x2="0" y2="15.484854" transform="matrix(3 0 0 1 150 84.515146)" fill="none" stroke="#000" stroke-width="3"/><line x1="0" y1="-15.484853" x2="0" y2="15.484854" transform="matrix(3 0 0 1 150 49.999999)" fill="none" stroke="#000" stroke-width="3"/><line x1="0" y1="-15.484853" x2="0" y2="15.484854" transform="translate(150 150)" fill="none" stroke="#000" stroke-width="3"/><line x1="0" y1="-15.484853" x2="0" y2="15.484854" transform="translate(150 284.515146)" fill="none" stroke="#000" stroke-width="3"/><line x1="0" y1="-15.484853" x2="0" y2="15.484854" transform="translate(150 219.580305)" fill="none" stroke="#000" stroke-width="3"/></svg>
                     </div>
                     <div id="signs" class="menu-button">SIGNS</div>
-                    <div id="alo" class="menu-button">ALO</div>
+                    <div id="alo" class="menu-button"></div>
                     <div id="a" class="menu-button"></div>
                     <div id="b" class="menu-button"></div>
                     <div id="c" class="menu-button"></div>
@@ -95,6 +95,7 @@
     <script type="text/javascript" charset="UTF-8" src="{% static 'src/sliders.js' %}"></script>
     <script type="text/javascript" charset="UTF-8" src="{% static 'src/camera.js' %}"></script>
     <script type="text/javascript" charset="UTF-8" src="{% static 'src/plot.js' %}"></script>
+    <script type="text/javascript" charset="UTF-8" src="{% static 'src/manual_control.js' %}"></script>
     <script>
            
     </script>

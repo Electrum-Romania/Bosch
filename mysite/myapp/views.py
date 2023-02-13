@@ -13,15 +13,27 @@ edge, created = EdgeDetection.objects.get_or_create(name='edges')
 
 # RPI SOCKET SERVER
 
-# host = '0.0.0.0'
-# port = 2244
-# server_socket = socket.socket()
-# server_socket.setsockopt(socket.SOL_SOCKET,socket.SO_REUSEADDR,1)
-# server_socket.bind((host, port))
-# server_socket.listen(0)
-# print('listen')
-# connection = server_socket.accept()[0]
-# print('connected')
+host = '0.0.0.0'
+port = 2244
+server_socket1 = socket.socket()
+server_socket1.setsockopt(socket.SOL_SOCKET,socket.SO_REUSEADDR,1)
+server_socket1.bind((host, port))
+server_socket1.listen(0)
+print('listen socket 1')
+
+host = '0.0.0.0'
+port = 2255
+server_socket2 = socket.socket()
+server_socket2.setsockopt(socket.SOL_SOCKET,socket.SO_REUSEADDR,1)
+server_socket2.bind((host, port))
+server_socket2.listen(0)
+print('listen socket 2')
+
+
+connection1 = server_socket1.accept()[0]
+print('connected socket 1')
+connection2 = server_socket2.accept()[0]
+print('connected socket 2')
 
 def index(request):
     template = loader.get_template('index.html')
@@ -45,61 +57,42 @@ def load(request):
 def camera(request):
     def stream():
         while True:
-            size = connection.recv(4)
+            size = connection1.recv(4)
             size = int.from_bytes(size, byteorder='big')
-            print('size = ', size)
 
             data = b''
 
             while len(data) < size:
                 if len(data) + 1024 < size:
-                    data += connection.recv(1024)
+                    data += connection1.recv(1024)
                 else:
-                    data += connection.recv(size - len(data))
+                    data += connection1.recv(size - len(data))
 
-            # f = open("frame.jpeg", 'wb')
-            # f.write(data)
-            # f.close()
 
             yield b'--frame\r\nContent-Type: image/jpeg\r\n\r\n' + data + b'\r\n'
 
     return StreamingHttpResponse(stream(), content_type='multipart/x-mixed-replace; boundary=frame')
 
-# @csrf_exempt
-# def updateImage(request):
+@csrf_exempt
+def analysis(request):
+    def stream():
+        while True:
+            size = connection2.recv(4)
+            size = int.from_bytes(size, byteorder='big')
 
-#     imc
+            data = b''
 
-# class VideoCamera(object):
-#     def __init__(self):
-#         self.video = cv2.VideoCapture(0)
-#         (self.grabbed, self.frame) = self.video.read()
-#         threading.Thread(target=self.update, args=()).start()
-
-#     def __del__(self):
-#         self.video.release()
-
-#     def get_frame(self):
-#         image = self.frame
-#         _, jpeg = cv2.imencode('.jpg', image)
-#         return jpeg.tobytes()
-
-#     def update(self):
-#         while True:
-#             (self.grabbed, self.frame) = self.video.read()
+            while len(data) < size:
+                if len(data) + 1024 < size:
+                    data += connection2.recv(1024)
+                else:
+                    data += connection2.recv(size - len(data))
 
 
-# def gen(camera):
-#     while True:
-#         frame = camera.get_frame()
-#         yield(b'--frame\r\n'
-#               b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n\r\n')
+            yield b'--frame\r\nContent-Type: image/jpeg\r\n\r\n' + data + b'\r\n'
 
+    return StreamingHttpResponse(stream(), content_type='multipart/x-mixed-replace; boundary=frame')
 
-# @gzip.gzip_page
-# def videoFeed(request):
-#     try:
-#         cam = VideoCamera()
-#         return StreamingHttpResponse(gen(cam), content_type="multipart/x-mixed-replace;boundary=frame")
-#     except:  # This is bad! replace it with proper handling
-#         pass
+@csrf_exempt
+def manual_control(request):
+    pass
