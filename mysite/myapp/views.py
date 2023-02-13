@@ -19,7 +19,7 @@ server_socket1 = socket.socket()
 server_socket1.setsockopt(socket.SOL_SOCKET,socket.SO_REUSEADDR,1)
 server_socket1.bind((host, port))
 server_socket1.listen(0)
-print('listen socket 1')
+print('listen camera socket')
 
 host = '0.0.0.0'
 port = 2255
@@ -27,13 +27,22 @@ server_socket2 = socket.socket()
 server_socket2.setsockopt(socket.SOL_SOCKET,socket.SO_REUSEADDR,1)
 server_socket2.bind((host, port))
 server_socket2.listen(0)
-print('listen socket 2')
+print('listen analysis socket')
 
+host = '0.0.0.0'
+port = 2266
+server_socket3 = socket.socket()
+server_socket3.setsockopt(socket.SOL_SOCKET,socket.SO_REUSEADDR,1)
+server_socket3.bind((host, port))
+server_socket3.listen(0)
+print('listen command socket')
 
 connection1 = server_socket1.accept()[0]
-print('connected socket 1')
+print('connected camera socket')
 connection2 = server_socket2.accept()[0]
-print('connected socket 2')
+print('connected analysis socket')
+connection3 = server_socket3.accept()[0]
+print('connected command socket')
 
 def index(request):
     template = loader.get_template('index.html')
@@ -95,4 +104,8 @@ def analysis(request):
 
 @csrf_exempt
 def manual_control(request):
-    pass
+    pressed_key = request.POST["pressed_key"]
+    data = "pressed_key: " + pressed_key + "\r\n"
+    connection3.send(data.encode())
+
+# pressed_key: w/a/s/d 
