@@ -9,7 +9,8 @@ import socket
 import numpy as np
 
 # store last session parameters
-edge, created = EdgeDetection.objects.get_or_create(name='edges')
+# edge, created = EdgeDetection.objects.get_or_create(name='edges')
+edge = EdgeDetection(name='edges')
 
 # RPI SOCKET SERVER
 
@@ -37,22 +38,23 @@ server_socket3.bind((host, port))
 server_socket3.listen(0)
 print('listen command socket')
 
+connection3 = server_socket3.accept()[0]
+print('connected command socket')
 connection1 = server_socket1.accept()[0]
 print('connected camera socket')
 connection2 = server_socket2.accept()[0]
 print('connected analysis socket')
-connection3 = server_socket3.accept()[0]
-print('connected command socket')
 
 def index(request):
     template = loader.get_template('index.html')
     
     context = {
-        'maxVal': getattr(edge, 'maxVal'),
-        'minVal': getattr(edge, 'minVal'),
-        'pos1': getattr(edge, 'pos1'),
-        'pos2': getattr(edge, 'pos2'),
-        'pos3': getattr(edge, 'pos3'),
+        'lane_perspective_floor': getattr(edge, 'lane_perspective_floor'),
+        'lane_perspective_roof': getattr(edge, 'lane_perspective_roof'),
+        'lane_perspective_startfloor': getattr(edge, 'lane_perspective_startfloor'),
+        'lane_perspective_stopfloor': getattr(edge, 'lane_perspective_stopfloor'),
+        'lane_perspective_startroof': getattr(edge, 'lane_perspective_startroof'),
+        'lane_perspective_stoproof': getattr(edge, 'lane_perspective_stoproof'),
     }
     return HttpResponse(template.render(context, request))
 
@@ -60,6 +62,9 @@ def index(request):
 def load(request):
     setattr(edge, request.POST['id'], request.POST['value'])
     edge.save()
+    data = request.POST['id'] + '=' + request.POST['value'] + '\r\n'
+    print(data)
+    connection3.send(data.encode())
     return HttpResponse(request.POST['id'])
 
 @csrf_exempt
@@ -102,10 +107,9 @@ def analysis(request):
 
     return StreamingHttpResponse(stream(), content_type='multipart/x-mixed-replace; boundary=frame')
 
+# pressed_key=w/a/s/d 
 @csrf_exempt
 def manual_control(request):
     pressed_key = request.POST["pressed_key"]
-    data = "pressed_key: " + pressed_key + "\r\n"
+    data = "pressed_key=" + pressed_key + "\r\n"
     connection3.send(data.encode())
-
-# pressed_key: w/a/s/d 

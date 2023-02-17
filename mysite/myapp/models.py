@@ -4,11 +4,13 @@ from django.db import models
 
 class EdgeDetection(models.Model):
     name = models.CharField(default="edges", max_length=20)
-    minVal = models.PositiveIntegerField(default=100)
-    maxVal = models.PositiveIntegerField(default=100)
-    pos1 = models.PositiveIntegerField(default=0)
-    pos2 = models.PositiveIntegerField(default=0)
-    pos3 = models.PositiveIntegerField(default=0)
+
+    lane_perspective_floor = models.PositiveIntegerField(default=250)
+    lane_perspective_roof = models.PositiveIntegerField(default=750)
+    lane_perspective_startfloor = models.PositiveIntegerField(default=250)
+    lane_perspective_stopfloor = models.PositiveIntegerField(default=750)
+    lane_perspective_startroof = models.PositiveIntegerField(default=250)
+    lane_perspective_stoproof = models.PositiveIntegerField(default=750)
 
     def __str__(self):
         return self.name
