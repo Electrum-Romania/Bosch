@@ -7,19 +7,25 @@ div.config {
 }
 
 div.menu {
-  padding: 1%;
-  width: 80%;
-  height: 5%;
   border-radius: 4px;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+div.menu.horizontal {
+  padding: 1%;
+  width: 80%;
+  height: 5%;
   flex-direction: row;
+}
+div.menu.vertical {
+  padding: 1%;
+  width: 20%;
+  height: 80%;
+  flex-direction: column;
 }
 
 .menu-button {
-  width: 20%;
-  height: 200%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -34,6 +40,14 @@ div.menu {
 }
 .menu-button.clicked {
   background: rgb(219, 241, 253);
+}
+.menu-button.horizontal {
+  width: 20%;
+  height: 200%;
+}
+.menu-button.vertical {
+  width: 100%;
+  height: 10%;
 }
 
 div.parameters {

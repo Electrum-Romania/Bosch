@@ -37,8 +37,4 @@ div.window {
 
 .frame, .parameters {
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
-}
-
-.window, .frame {
-  border: 1px dashed white;
 }/*# sourceMappingURL=style.css.map */
