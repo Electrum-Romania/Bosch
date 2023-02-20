@@ -20,15 +20,13 @@ $('.vertical.menu-button').on('click', function(e) {
     e.preventDefault();
     var $el = $(this);
     second = this.id;
-});
 
-$('input[type=range]').on('input', function() {
-    
     $.ajax({
-        url: "load",
+        url: "request_frame",
         type: "POST",
         data: {
             'analysis': main + " " + second,
         },
     })  
+
 });
