@@ -113,9 +113,11 @@ def manual_control(request):
     pressed_key = request.POST["pressed_key"]
     data = "pressed_key=" + pressed_key + "\r\n"
     connection3.send(data.encode())
+    return HttpResponse("")
 
 @csrf_exempt
 def request_frame(request):
     analysis = request.POST["analysis"]
     data = analysis+ "\r\n"
     connection3.send(data.encode())
+    return HttpResponse("")

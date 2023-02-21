@@ -21,6 +21,7 @@
         <div class = "upper container-half">
             <div class = "window">
                 <div class="analysis vertical menu">
+                    <div id="raw" class="vertical menu-button">RAW</div>
                     <div id="perspective" class="vertical menu-button">PERSPECTIVE</div>
                     <div id="perspective-mask" class="vertical menu-button">MASK</div>
                     <div id="alo" class="vertical menu-button">a</div>
@@ -29,10 +30,10 @@
                     <div id="alo" class="vertical menu-button">a</div>
                     <div id="alo" class="vertical menu-button">a</div>
                 </div>
-                <div id="camera" class="frame">
+                <div id="analysis1_mode" class="frame">
                     <img class = "frame" src="{% url 'camera' %}">
                 </div>
-                <div class="frame">
+                <div id="analysis2_mode" class="frame">
                     <img class = "frame" src="{% url 'analysis' %}">
                 </div>
             </div>

@@ -2,8 +2,13 @@ $('.menu-button').on('click', function(e) {
     e.preventDefault();
     var $el = $(this);
     $el.addClass("clicked").siblings().removeClass('clicked');
-    $('#' + this.id + "-icon").removeClass("visible").siblings().addClass('visible');
-    $('#' + this.id + "-div").addClass("visible").siblings().removeClass('visible');
+});
+
+var frame = "analysis0_mode";
+$('.frame').on('click', function(e) {
+    e.preventDefault();
+    var $el = $(this);
+    frame = this.id;
 });
 
 var main = ""
@@ -12,9 +17,12 @@ $('.horizontal.menu-button').on('click', function(e) {
     e.preventDefault();
     var $el = $(this);
     main = this.id;
+
+    $('#' + this.id + "-icon").removeClass("visible").siblings().addClass('visible');
+    $('#' + this.id + "-div").addClass("visible").siblings().removeClass('visible');
 });
 
-var second = ""
+var second = "raw"
 
 $('.vertical.menu-button').on('click', function(e) {
     e.preventDefault();
@@ -25,8 +33,14 @@ $('.vertical.menu-button').on('click', function(e) {
         url: "request_frame",
         type: "POST",
         data: {
-            'analysis': main + " " + second,
+            'analysis': frame + "=" + main + "_" + second,
         },
     })  
 
+    console.log(frame + "=" + main + "_" + second);
+
 });
+
+
+
+
