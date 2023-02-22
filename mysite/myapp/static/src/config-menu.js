@@ -4,7 +4,8 @@ $('.menu-button').on('click', function(e) {
     $el.addClass("clicked").siblings().removeClass('clicked');
 });
 
-var frame = "analysis0_mode";
+var frame = "";
+
 $('.frame').on('click', function(e) {
     e.preventDefault();
     var $el = $(this);
@@ -24,7 +25,7 @@ $('.horizontal.menu-button').on('click', function(e) {
 
 var second = "raw"
 
-$('.vertical.menu-button').on('click', function(e) {
+$('.vertical.menu-button.f').on('click', function(e) {
     e.preventDefault();
     var $el = $(this);
     second = this.id;
@@ -41,6 +42,11 @@ $('.vertical.menu-button').on('click', function(e) {
 
 });
 
-
+$('.vertical.menu-button.m').on('click', function(e) {
+    e.preventDefault();
+    
+    // $('#' + this.id + "-icon").removeClass("visible").siblings().addClass('visible');
+    $('#' + this.id + "-div").addClass("visible").siblings().removeClass('visible');
+});
 
 

@@ -18,3 +18,26 @@ $('input[type=range]').on('input', function() {
 
     
 });
+
+$('.menu-button.load').on('click', function(e) {
+    e.preventDefault();
+    var $el = $(this);
+    $el.removeClass('clicked');
+    $('input[type=range]').each(function() {
+        var $slider = $(this);
+        $.ajax({
+            url: "load",
+            type: "POST",
+            data: {
+                'id': $slider.id,
+                'value': $slider.value,
+            },
+            success: function (data) {
+                console.log(this.id + " " + this.value);
+            },
+            error: function(data) {
+                console.log("ERROR" + this.id + " " + this.value);
+            }
+        })
+    });
+});

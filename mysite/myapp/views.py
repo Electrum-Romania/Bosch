@@ -9,8 +9,8 @@ import socket
 import numpy as np
 
 # store last session parameters
-# edge, created = EdgeDetection.objects.get_or_create(name='edges')
-edge = EdgeDetection(name='edges')
+edge, created = EdgeDetection.objects.get_or_create(name='edges')
+# edge = EdgeDetection(name='edges')
 
 # RPI SOCKET SERVER
 

@@ -77,4 +77,8 @@ div.parameters-div {
 }
 #lanes-icon:active {
   filter: invert(0%);
+}
+
+div.misc {
+  visibility: hidden;
 }/*# sourceMappingURL=config.css.map */

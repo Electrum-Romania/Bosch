@@ -21,14 +21,14 @@
         <div class = "upper container-half">
             <div class = "window">
                 <div class="analysis vertical menu">
-                    <div id="raw" class="vertical menu-button">RAW</div>
-                    <div id="perspective" class="vertical menu-button">PERSPECTIVE</div>
-                    <div id="perspective-mask" class="vertical menu-button">MASK</div>
-                    <div id="alo" class="vertical menu-button">a</div>
-                    <div id="alo" class="vertical menu-button">a</div>
-                    <div id="alo" class="vertical menu-button">a</div>
-                    <div id="alo" class="vertical menu-button">a</div>
-                    <div id="alo" class="vertical menu-button">a</div>
+                    <div id="raw" class="vertical menu-button f">RAW</div>
+                    <div id="perspective" class="vertical menu-button f">PERSPECTIVE</div>
+                    <div id="perspective-mask" class="vertical menu-button f">MASK</div>
+                    <div id="grey" class="vertical menu-button f">GREY</div>
+                    <div id="white" class="vertical menu-button f">WHITE</div>
+                    <div id="alo" class="vertical menu-button f">a</div>
+                    <div id="alo" class="vertical menu-button f">a</div>
+                    <div id="alo" class="vertical menu-button f">a</div>
                 </div>
                 <div id="analysis1_mode" class="frame">
                     <img class = "frame" src="{% url 'camera' %}">
@@ -52,35 +52,36 @@
                     <div id="lanes-div" class="parameters-div">
                         <p text-align="center">Perspective warp
                         <div>
-                            <input id="lane_perspective_floor" class="slider" type="range" min="0" max="2000" value={{maxVal}}>
+                            <input id="lane_perspective_floor" class="slider" type="range" min="0" max="2000" value={{lane_perspective_floor}}>
                             <label for="lane_perspective_floor">lane_perspective_floor</label>
                             <span id="lane_perspective_floor-value">{{lane_perspective_floor}}</span>
                         </div> 
                         <div>
-                            <input id="lane_perspective_roof" class="slider" type="range" min="0" max="2000" value={{minval}}>
+                            <input id="lane_perspective_roof" class="slider" type="range" min="0" max="2000" value={{lane_perspective_roof}}>
                             <label for="lane_perspective_roof">lane_perspective_roof</label>
                             <span id="lane_perspective_roof-value">{{lane_perspective_roof}}</span>
                         </div>
                         <div>
-                            <input id="lane_perspective_startfloor" class="slider" type="range" min=0 max=2000 value={{pos1}}>
+                            <input id="lane_perspective_startfloor" class="slider" type="range" min=0 max=2000 value={{lane_perspective_startfloor}}>
                             <label for="lane_perspective_startfloor">lane_perspective_startfloor</label>
                             <span id="lane_perspective_startfloor-value">{{lane_perspective_startfloor}}</span>
                         </div>
                         <div>
-                            <input id="lane_perspective_stopfloor" class="slider" type="range" min=0 max=2000 value={{pos2}}>
+                            <input id="lane_perspective_stopfloor" class="slider" type="range" min=0 max=2000 value={{lane_perspective_stopfloor}}>
                             <label for="lane_perspective_stopfloor">lane_perspective_stopfloor</label>
                             <span id="lane_perspective_stopfloor-value">{{lane_perspective_stopfloor}}</span>
                         </div>
                         <div>
-                            <input id="lane_perspective_startroof" class="slider" type="range" min=0 max=2000 value={{pos2}}>
+                            <input id="lane_perspective_startroof" class="slider" type="range" min=0 max=2000 value={{lane_perspective_startroof}}>
                             <label for="lane_perspective_startroof">lane_perspective_startroof</label>
                             <span id="lane_perspective_startroof-value">{{lane_perspective_startroof}}</span>
                         </div>
                         <div>
-                            <input id="lane_perspective_stoproof" class="slider" type="range" min=0 max=2000 value={{pos2}}>
+                            <input id="lane_perspective_stoproof" class="slider" type="range" min=0 max=2000 value={{lane_perspective_stoproof}}>
                             <label for="lane_perspective_stoproof">lane_perspective_stoproof</label>
                             <span id="lane_perspective_stoproof-value">{{lane_perspective_stoproof}}</span>
                         </div>
+                        <div class="menu-button load">LOAD</div>
                     </div>
                     <div id="signs-div" class="parameters-div"></div>
                     <div id="alo-div" class="parameters-div"></div>
@@ -90,19 +91,24 @@
             </div>
         </div>
         <div class = "lower container-half">
-            <div class = "window traffic">
-                <svg id="car" class="traffic" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 150 150" shape-rendering="geometricPrecision" text-rendering="geometricPrecision"><rect width="79.868154" height="150.608519" rx="16" ry="16" transform="translate(40.136917 0.000001)" stroke-width="0"/><rect width="2.281947" height="10.141988" rx="0" ry="0" transform="translate(37.85497 19.776876)" stroke-width="0"/><rect width="2.281947" height="10.141988" rx="0" ry="0" transform="translate(37.855002 123.985804)" stroke-width="0"/><rect width="2.281947" height="10.141988" rx="0" ry="0" transform="translate(120.005071 123.985804)" stroke-width="0"/><rect width="2.281947" height="10.141988" rx="0" ry="0" transform="translate(120.005071 19.776876)" stroke-width="0"/><rect width="10.141988" height="3.549696" rx="0" ry="0" transform="translate(50.025355 10.141988)" fill="#fff" stroke-width="0"/><rect width="10.141988" height="3.549696" rx="0" ry="0" transform="translate(99.213995 10.141988)" fill="#fff" stroke-width="0"/><rect width="59.330628" height="94.06694" rx="0" ry="0" transform="translate(50.025355 29.918864)" fill="#282829" stroke-width="0"/></svg>
-                <svg id="arrow-right" class="traffic" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16"> <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/> </svg> 
-            </div>
+
             <div id="misc" class="window">
-                <div class="manual_control">
+                <div class="analysis vertical menu">
+                    <div id="manual_control" class="vertical menu-button m">CONTROL</div>
+                    <div id="simulation" class="vertical menu-button m">SIMULATION</div>
+                </div>
+                <div id="manual_control-div" class="manual_control misc">
                     <div id="forward" class="key">W</div>
                     <div id="back" class="key">S</div>
                     <div id="left" class="key">A</div>
                     <div id="right" class="key">D</div>
                 </div>
-
+                <div id="simulation-div" class = "car window misc">
+                    <svg id="car" class="traffic" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 150 150" shape-rendering="geometricPrecision" text-rendering="geometricPrecision"><rect width="79.868154" height="150.608519" rx="16" ry="16" transform="translate(40.136917 0.000001)" stroke-width="0"/><rect width="2.281947" height="10.141988" rx="0" ry="0" transform="translate(37.85497 19.776876)" stroke-width="0"/><rect width="2.281947" height="10.141988" rx="0" ry="0" transform="translate(37.855002 123.985804)" stroke-width="0"/><rect width="2.281947" height="10.141988" rx="0" ry="0" transform="translate(120.005071 123.985804)" stroke-width="0"/><rect width="2.281947" height="10.141988" rx="0" ry="0" transform="translate(120.005071 19.776876)" stroke-width="0"/><rect width="10.141988" height="3.549696" rx="0" ry="0" transform="translate(50.025355 10.141988)" fill="#fff" stroke-width="0"/><rect width="10.141988" height="3.549696" rx="0" ry="0" transform="translate(99.213995 10.141988)" fill="#fff" stroke-width="0"/><rect width="59.330628" height="94.06694" rx="0" ry="0" transform="translate(50.025355 29.918864)" fill="#282829" stroke-width="0"/></svg>
+                    <svg id="arrow-right" class="traffic" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16"> <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/> </svg> 
+                </div>
             </div>
+            <div id="space" class="window"></div>
         </div>
     </div>
 
