@@ -23,14 +23,14 @@ $('.menu-button.load').on('click', function(e) {
     e.preventDefault();
     var $el = $(this);
     $el.removeClass('clicked');
-    $('input[type=range]').each(function() {
+    $('input[type=range]').each(function(slider) {
         var $slider = $(this);
         $.ajax({
             url: "load",
             type: "POST",
             data: {
-                'id': $slider.id,
-                'value': $slider.value,
+                'id': slider.id,
+                'value': slider.value,
             },
             success: function (data) {
                 console.log(this.id + " " + this.value);
