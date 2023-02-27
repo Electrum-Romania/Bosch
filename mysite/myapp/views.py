@@ -55,6 +55,14 @@ def index(request):
         'lane_perspective_stopfloor': getattr(edge, 'lane_perspective_stopfloor'),
         'lane_perspective_startroof': getattr(edge, 'lane_perspective_startroof'),
         'lane_perspective_stoproof': getattr(edge, 'lane_perspective_stoproof'),
+        'lane_left_rect_x': getattr(edge, 'lane_left_rect_x'),
+        'lane_left_rect_y': getattr(edge, 'lane_left_rect_y'),
+        'lane_left_rect_width': getattr(edge, 'lane_left_rect_width'),
+        'lane_left_rect_height': getattr(edge, 'lane_left_rect_height'),
+        'lane_right_rect_x': getattr(edge, 'lane_right_rect_x'),
+        'lane_right_rect_y': getattr(edge, 'lane_right_rect_y'),
+        'lane_right_rect_width': getattr(edge, 'lane_right_rect_width'),
+        'lane_right_rect_height': getattr(edge, 'lane_right_rect_height'),
     }
     return HttpResponse(template.render(context, request))
 

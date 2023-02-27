@@ -27,7 +27,7 @@
                     <div id="gray" class="vertical menu-button f">GRAY</div>
                     <div id="white" class="vertical menu-button f">WHITE</div>
                     <div id="alo" class="vertical menu-button f">a</div>
-                    <div id="alo" class="vertical menu-button f">a</div>
+                    <div id="window" class="vertical menu-button f">WINDOW</div>
                     <div id="result" class="vertical menu-button f">RESULT</div>
                 </div>
                 <div id="analysis1_mode" class="frame">
@@ -81,6 +81,61 @@
                             <label for="lane_perspective_stoproof">lane_perspective_stoproof</label>
                             <span id="lane_perspective_stoproof-value">{{lane_perspective_stoproof}}</span>
                         </div>
+                        
+                            <div>
+                                <input id="lane_threshold" class="slider" type="range" min=0 max=2000 value={{lane_threshold}}>
+                                <label for="lane_threshold">lane_threshold</label>
+                                <span id="lane_threshold-value">{{lane_threshold}}</span>
+                                </div>
+                        
+                        <div>
+                                <input id="lane_left_rect_x" class="slider" type="range" min=0 max=2000 value={{lane_left_rect_x}}>
+                                <label for="lane_left_rect_x">lane_left_rect_x</label>
+                                <span id="lane_left_rect_x-value">{{lane_left_rect_x}}</span>
+                                </div>
+                        
+                        <div>
+                                <input id="lane_left_rect_y" class="slider" type="range" min=0 max=2000 value={{lane_left_rect_y}}>
+                                <label for="lane_left_rect_y">lane_left_rect_y</label>
+                                <span id="lane_left_rect_y-value">{{lane_left_rect_y}}</span>
+                                </div>
+                        
+                        <div>
+                                <input id="lane_left_rect_width" class="slider" type="range" min=0 max=2000 value={{lane_left_rect_width}}>
+                                <label for="lane_left_rect_width">lane_left_rect_width</label>
+                                <span id="lane_left_rect_width-value">{{lane_left_rect_width}}</span>
+                                </div>
+                        
+                        <div>
+                                <input id="lane_left_rect_height" class="slider" type="range" min=0 max=2000 value={{lane_left_rect_height}}>
+                                <label for="lane_left_rect_height">lane_left_rect_height</label>
+                                <span id="lane_left_rect_height-value">{{lane_left_rect_height}}</span>
+                                </div>
+                        
+                        <div>
+                                <input id="lane_right_rect_x" class="slider" type="range" min=0 max=2000 value={{lane_right_rect_x}}>
+                                <label for="lane_right_rect_x">lane_right_rect_x</label>
+                                <span id="lane_right_rect_x-value">{{lane_right_rect_x}}</span>
+                                </div>
+                        
+                        <div>
+                                <input id="lane_right_rect_y" class="slider" type="range" min=0 max=2000 value={{lane_right_rect_y}}>
+                                <label for="lane_right_rect_y">lane_right_rect_y</label>
+                                <span id="lane_right_rect_y-value">{{lane_right_rect_y}}</span>
+                                </div>
+                        
+                        <div>
+                                <input id="lane_right_rect_width" class="slider" type="range" min=0 max=2000 value={{lane_right_rect_width}}>
+                                <label for="lane_right_rect_width">lane_right_rect_width</label>
+                                <span id="lane_right_rect_width-value">{{lane_right_rect_width}}</span>
+                                </div>
+                        
+                        <div>
+                                <input id="lane_right_rect_height" class="slider" type="range" min=0 max=2000 value={{lane_right_rect_height}}>
+                                <label for="lane_right_rect_height">lane_right_rect_height</label>
+                                <span id="lane_right_rect_height-value">{{lane_right_rect_height}}</span>
+                                </div>
+                        
                         <div class="menu-button load">LOAD</div>
                     </div>
                     <div id="signs-div" class="parameters-div"></div>

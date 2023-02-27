@@ -23,8 +23,8 @@ $('.menu-button.load').on('click', function(e) {
     e.preventDefault();
     var $el = $(this);
     $el.removeClass('clicked');
-    $('input[type=range]').each(function(slider) {
-        var $slider = $(this);
+    document.querySelectorAll('input[type=range]').forEach(function(slider) {
+        // var $slider = $(this);
         $.ajax({
             url: "load",
             type: "POST",
@@ -33,10 +33,10 @@ $('.menu-button.load').on('click', function(e) {
                 'value': slider.value,
             },
             success: function (data) {
-                console.log(this.id + " " + this.value);
+                console.log(slider.id + " " + slider.value);
             },
             error: function(data) {
-                console.log("ERROR" + this.id + " " + this.value);
+                console.log("ERROR: " + slider.id + " " + slider.value);
             }
         })
     });
